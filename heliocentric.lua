@@ -1,3 +1,7 @@
+for i,v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
+v:Disable()
+end
+
 
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/GreenDeno/Venyx-UI-Library/main/source.lua"))()
 
@@ -46,6 +50,22 @@ characterSection:addButton("Invisibility", function()
 	Character.HumanoidRootPart.RootJoint:Destroy()
 	wait(.5)
 	Character.HumanoidRootPart.Position = currentPosition
+end)
+
+
+local antiSlow = false
+characterSection:addToggle("Anti-Slow", false, function(value)
+	antiSlow = value
+end)
+
+task.spawn(function()
+	while wait() do
+		if antiSlow == true then
+			if Player.Character.Values.Speed:FindFirstChild("SpeedVal") then
+				Player.Character.Values.Speed:FindFirstChild("SpeedVal"):Destroy()
+			end
+		end
+	end
 end)
 
 
