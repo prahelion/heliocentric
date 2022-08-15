@@ -46,9 +46,8 @@ characterSection:addButton("Invisibility", function()
 	Character.HumanoidRootPart.RootJoint:Destroy()
 	wait(.5)
 	Character.HumanoidRootPart.Position = currentPosition
-
-
 end)
+
 
 characterSection:addSlider("Walk Speed", 16, 16, 300, function(value, update)
 	local Character = Player.Character
@@ -111,11 +110,11 @@ local chestRunning = false
 manualSection:addButton("Collect Chests", function()
 	if chestRunning then return end
 	chestRunning = true
-	
+
 	local Character = Player.Character
 	local HRP = Character.HumanoidRootPart
 	local currentPosition = HRP.CFrame
-		
+
 	for _, Descendant in pairs(workspace.ItemSpawns.Chests:GetDescendants()) do
 		if Descendant.Name == "Interaction" and Descendant.Parent.Name == "ProximityAttachment" then
 			HRP.CFrame = Descendant.Parent.Parent.CFrame
@@ -124,7 +123,7 @@ manualSection:addButton("Collect Chests", function()
 			task.wait()
 		end
 	end
-	
+
 	HRP.CFrame = currentPosition
 	chestRunning = false
 end)
@@ -337,7 +336,7 @@ end
 
 function npcDropdownPress(NPC)
 	local Character = Player.Character
-	
+
 	Character.HumanoidRootPart.CFrame = workspace.NPCS[NPC].HumanoidRootPart.CFrame
 end
 
