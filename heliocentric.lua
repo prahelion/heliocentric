@@ -24,7 +24,7 @@ local characterSection = playerPage:addSection("Character")
 
 game:GetService("UserInputService").InputBegan:Connect(function(Input, Proc)
 	if Proc then return end
-	if Input.KeyCode == Enum.KeyCode.End then
+	if Input.KeyCode == Enum.KeyCode.LeftAlt then
 		UI:toggle()
 	end
 end)
