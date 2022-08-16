@@ -1,7 +1,8 @@
-for i,v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
-v:Disable()
-end
-
+spawn(function()
+	for i,v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
+		v:Disable()
+	end
+end)
 
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/GreenDeno/Venyx-UI-Library/main/source.lua"))()
 
@@ -118,9 +119,6 @@ emoteSection:addDropdown("Emote List",
 
 		funny:InvokeServer(emote)
 	end)
-
-
-
 
 --// Farming Page
 
@@ -265,11 +263,10 @@ workspace.ItemSpawns.StandardItems.DescendantAdded:Connect(function(Descendant)
 	local currentPosition = HRP.CFrame
 
 	if Descendant.Name == "Interaction" and Descendant.Parent.Name == "ProximityAttachment" then
-		HRP.CFrame = Descendant.Parent.Parent.CFrame
+		HRP.CFrame = Descendant.Parent.Parent.Parent.CFrame
 		task.wait(.2)
 		fireproximityprompt(Descendant)
 		task.wait()
-		HRP.CFrame = currentPosition
 	end
 end)
 
